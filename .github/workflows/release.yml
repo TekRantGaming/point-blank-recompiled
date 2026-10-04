@@ -1,0 +1,43 @@
+# Publishes the Windows builder when a version tag (v*) is pushed.
+# The builder contains only this repository's files and the PSXRecomp
+# framework; players build the game on their own PC from their own disc,
+# so no game code is released.
+name: release
+
+on:
+  push:
+    tags: ["v*"]
+  workflow_dispatch:
+
+permissions:
+  contents: write
+
+jobs:
+  windows-builder:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          submodules: recursive
+
+      - name: Check that no game data is included
+        run: |
+          bad=$(git ls-files -co --exclude-standard | grep -i -E '\.(bin|cue|iso|img|chd)$|^generated/|^disc/|SLUS_004' || true)
+          if [ -n "$bad" ]; then echo "Game data found:"; echo "$bad"; exit 1; fi
+
+      - name: Package the builder
+        run: |
+          name="PointBlank-Builder-${GITHUB_REF_NAME}-windows"
+          mkdir -p "/tmp/${name}"
+          rsync -a --exclude='.git' --exclude='.github' ./ "/tmp/${name}/"
+          (cd /tmp && zip -qr "${GITHUB_WORKSPACE}/${name}.zip" "${name}")
+          echo "ZIP=${name}.zip" >> "$GITHUB_ENV"
+          unzip -l "${name}.zip" | tail -1
+
+      - name: Publish the release
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          gh release create "$GITHUB_REF_NAME" "$ZIP" \
+            --title "Point Blank PC Port ${GITHUB_REF_NAME}" \
+            --notes-file .github/release-notes.md

@@ -1,104 +1,190 @@
-# PointBlank Recompiled
+<div align="center">
 
-<!-- retcomm-readme-metrics -->
-[![GitHub downloads (all assets, all releases)](https://img.shields.io/github/downloads/RetroPortingToolKit/PointBlankRecomp/total)](https://github.com/RetroPortingToolKit/PointBlankRecomp/releases)
-[![GitHub downloads (latest release)](https://img.shields.io/github/downloads/RetroPortingToolKit/PointBlankRecomp/latest/total)](https://github.com/RetroPortingToolKit/PointBlankRecomp/releases/latest)
-[![GitHub release](https://img.shields.io/github/v/release/RetroPortingToolKit/PointBlankRecomp)](https://github.com/RetroPortingToolKit/PointBlankRecomp/releases/latest)
-<!-- /retcomm-readme-metrics -->
+<img src="docs/images/banner.jpg" alt="Point Blank PC Port" width="100%">
 
-Static recompilation of **PointBlank** built on
-[psxrecomp](https://github.com/mstan/psxrecomp) and
-[recomp-ui](https://github.com/RetroPortingToolKit/recomp-ui).
+<br>
 
-Light-gun shooting gallery
+[![Latest release](https://img.shields.io/github/v/release/TekRantGaming/point-blank-recompiled?style=for-the-badge&label=release&color=ff4f9a&labelColor=101433)](https://github.com/TekRantGaming/point-blank-recompiled/releases/latest)
+[![Downloads](https://img.shields.io/github/downloads/TekRantGaming/point-blank-recompiled/total?style=for-the-badge&color=2f7bff&labelColor=101433)](https://github.com/TekRantGaming/point-blank-recompiled/releases)
+![Platforms](https://img.shields.io/badge/platforms-Windows-00acc1?style=for-the-badge&labelColor=101433)
 
-| | |
-|---|---|
-| Players | 2 |
-| Region | USA |
-| Publisher | Namco |
-| Year | 1997 |
+### Namco's Point Blank on PC, running natively. Shoot with your mouse or an Xbox controller, no light gun needed.
 
-Scaffolded with the New Project Layout. See
-`psxrecomp/docs/GAME_PROJECT_SETUP.md` for the full flow.
+[<img src="https://img.shields.io/badge/Download-Windows%20Builder-ff4f9a?style=for-the-badge&logo=windows&logoColor=white&labelColor=101433" alt="Download for Windows" height="40">](https://github.com/TekRantGaming/point-blank-recompiled/releases/latest)
 
-<!-- retcomm-readme-launcher -->
-## Retro Launcher
+<sub>The original PlayStation game code, translated to native PC code with <a href="https://github.com/mstan/psxrecomp">PSXRecomp</a>. <b>No game files included</b>: bring your own disc image of Point Blank (PlayStation, North America, SLUS-00481).</sub>
 
-You can run this title **standalone** (download the release zip, point it at
-your disc, play), or manage installs, updates, and disc/BIOS wiring with
-**[Retro Launcher](https://github.com/RetroPortingToolKit/Retro-Launcher)** —
-the Retro Compilation Manager hub for self-compiling recomps.
+</div>
 
-[Downloads](https://github.com/RetroPortingToolKit/Retro-Launcher/releases) ·
-[Full README & features](https://github.com/RetroPortingToolKit/Retro-Launcher#readme)
+<br>
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/RetroPortingToolKit/Retro-Launcher/main/docs/screenshots/hub-and-game-launcher.png" alt="Retro hub with a background build, next to a title’s recomp-ui launcher" width="720">
-</p>
+## Highlights
 
-<p align="center">
-  <img src="https://raw.githubusercontent.com/RetroPortingToolKit/Retro-Launcher/main/docs/screenshots/queue-and-background-build.png" alt="Background cmake build with titles queued" width="720">
-</p>
+<table>
+<tr>
+<td width="33%" valign="top">
 
-Retro checks for updates, installs the prebuilt release zips, and automates
-BIOS/ROM/save plumbing so you are not stuck repeating each game’s first run by hand.
-<!-- /retcomm-readme-launcher -->
+**Aim with your mouse**<br>
+The game thinks a real Namco GunCon is plugged in. Point the cursor at the screen and click to shoot, exactly where you aim.
 
-## Legal
+</td>
+<td width="33%" valign="top">
 
-You must own the original game. Disc images under `disc/` are gitignored and
-must never be committed. Retail BIOS dumps are not redistributed and no C
-derived from one may be committed; releases run on the bundled MIT OpenBIOS.
+**Or with a controller**<br>
+Xbox, PlayStation and other controllers work too. The sticks move an on-screen sight, and the right trigger fires.
 
-`generated/` (the recompiled game C) **is committed**: releases ship the
-compiled game, built by CI from that tree. Regenerate and commit it whenever
-seeds or the framework pin change.
+</td>
+<td width="33%" valign="top">
 
-Default app icon: `assets/psxrecomp.ico` (and `.png` / `.svg`) — Retro-themed controller mark from `psxrecomp/assets/`. Windows builds embed it via `APP_ICON`.
+**Two players**<br>
+Plug in a second controller and Player 2 gets their own gun and sight, red against blue, just like the arcade.
 
-Optional box art under `launcher_assets/img/` may come from
-[libretro-thumbnails](https://github.com/libretro-thumbnails/libretro-thumbnails)
-(`Named_Boxarts`); see `BOXART_SOURCE.txt` when present.
+</td>
+</tr>
+<tr>
+<td valign="top">
 
-## Quick start (dev)
+**Straight to the action**<br>
+The long opening movies are skipped, so the title screen is up in seconds. You can switch them back on in the launcher's Mods list.
 
-```bash
-git submodule update --init --recursive
-./psxrecomp/tools/ci/build_emitters.sh
-python3 psxrecomp/psxrecomp_cli.py generate \
-  --config game.toml --project-root . --disc disc/<your>.cue
-git add generated && git commit -m "Regenerate game C"
-cmake -S . -B build-release -G Ninja -DCMAKE_BUILD_TYPE=Release
-cmake --build build-release --target psx-runtime
+</td>
+<td valign="top">
+
+**Native, not emulated**<br>
+Every function of the game was translated from PlayStation code to C and compiled for your PC. Your CPU runs the game directly.
+
+</td>
+<td valign="top">
+
+**One-click builder**<br>
+Double-click, pick your disc image, and the builder makes the PC version for you. No technical steps.
+
+</td>
+</tr>
+</table>
+
+## In game
+
+<div align="center">
+<img src="docs/images/gameplay-stage.jpg" alt="A Point Blank stage on PC" width="100%">
+</div>
+
+<table>
+<tr>
+<td width="50%"><img src="docs/images/title.jpg" alt="Title screen"></td>
+<td width="50%"><img src="docs/images/gameplay-2.jpg" alt="Gameplay"></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/images/stage-select.jpg" alt="Stage select: shoot the stage you want"></td>
+<td width="50%"><img src="docs/images/gameplay-3.jpg" alt="Gameplay"></td>
+</tr>
+<tr>
+<td width="50%"><img src="docs/images/arrange.jpg" alt="Arrange mode's adventure board"></td>
+<td valign="middle">
+
+**Every mode is here:** Arcade, the console-only **Arrange** mode with its adventure board and side quests, Training, Beginner and Expert stages, and two-player versus.
+
+</td>
+</tr>
+</table>
+
+### Light gun, without the light gun
+
+Point Blank was made for Namco's GunCon light gun, which only works on old CRT televisions. This port emulates the GunCon itself: wherever your mouse cursor or controller sight points on the picture becomes the spot the "gun" reports to the game. The game's own gun calibration and menus work as they did on the console.
+
+<table>
+<tr>
+<td width="55%"><img src="docs/images/calibration.jpg" alt="The game's GunCon calibration screen"></td>
+<td valign="middle">
+
+### Calibration
+The first time you play, the game asks you to shoot the centre of the screen. Click the middle of the target (or aim the sight there and pull the trigger), then press **A** to finish.
+
+</td>
+</tr>
+<tr>
+<td valign="middle">
+
+### Controller sight
+With a controller, a crosshair is drawn over the game so you can see where you are aiming: **red** for Player 1, **blue** for Player 2. Move the mouse and it hands aiming straight back to the cursor.
+
+</td>
+<td width="55%"><img src="docs/images/controller-sight.jpg" alt="The controller crosshair on the calibration screen"></td>
+</tr>
+<tr>
+<td><img src="docs/images/mode-select.jpg" alt="Mode select"></td>
+<td valign="middle">
+
+### Menus
+Everything is chosen by shooting it, like the original. Shoot **NO** to skip loading a memory card, then **Arcade** or **Arrange**, and pick a difficulty and stage the same way.
+
+</td>
+</tr>
+</table>
+
+## Controls
+
+| Action | Mouse | Controller |
+| --- | --- | --- |
+| Aim | move the cursor | left stick (fast) or right stick (fine) |
+| Shoot | left button | right trigger, A or RB |
+| Shoot off-screen | back side button, or point outside the picture | left trigger or B |
+| GunCon **A** (start, skip, confirm) | right button | Start or X |
+| GunCon **B** | middle button | Back or Y |
+
+The first controller plays as Player 1 alongside the mouse; a second controller becomes Player 2. Screens that say **Press the button**, such as the rules, want **A**.
+
+## Getting started
+
+**You need:** Windows 10 or 11 (64-bit), a graphics card with OpenGL 3.3, and your own disc image of **Point Blank (USA)** as a `.cue` with its `.bin` (Redump `Point Blank (USA)`, serial SLUS-00481).
+
+1. Download the **Windows builder** from the [latest release](https://github.com/TekRantGaming/point-blank-recompiled/releases/latest) and unzip it.
+2. Double-click **Build Point Blank.bat**.
+3. If it asks, let it install the build tools (Visual Studio Build Tools with Clang, CMake, Ninja and Python). This is a one-time download of about 6 GB.
+4. Pick your `Point Blank (USA).cue` when asked. The builder checks that it is the right game.
+5. Wait while it builds (15 to 30 minutes). The finished game appears in the **PointBlank** folder, with an optional desktop shortcut.
+
+**Why a builder and not a ready-made download?** The PC version is made from the game's own code, which belongs to Namco and can't be shared. The builder makes it on your PC from your own disc, so nothing from the game is ever downloaded or uploaded.
+
+The game opens with a launcher where you can change the display, controls and mods. Run `PointBlank_Recompiled.exe --no-launcher` to go straight into the game.
+
+<details>
+<summary><b>Building by hand (for developers)</b></summary>
+
+```powershell
+git clone --recursive https://github.com/TekRantGaming/point-blank-recompiled.git
+cd point-blank-recompiled
+.\Build-PointBlank.ps1 -Cue "C:\path\to\Point Blank (USA).cue"
 ```
 
-Releases: tag `vX.Y.Z` (or run the *Release builds* workflow). CI builds the
-committed `generated/` C on Linux, Windows and macOS and attaches
-`pointblank-<version>-<platform>.zip`, the compiled game. Locally:
-`scripts/package_release.sh build-release linux-x64`.
+The script loads the Visual Studio environment and then:
 
-## Symbols
+1. builds the recompiler: `cmake -S psxrecomp/recompiler -B build-recompiler -G Ninja`, target `psxrecomp-game psxrecomp-bios`
+2. translates the game: `python psxrecomp/psxrecomp_cli.py generate --config game.toml --project-root . --disc <cue>` (writes `generated/`, which is never committed)
+3. compiles the runtime with `clang-cl` into `build/` (plain MSVC `cl` cannot build the runtime's C11 atomics); after that, `build.bat` rebuilds
 
-Progressive map: `symbols.toml` → `python3 tools/sync_symbols.py` →
-`psx_symbols.h` (`PSX_FN_*`). See `psxrecomp/docs/SYMBOLS.md`.
+Game settings live in [`game.toml`](game.toml); `[controller] guncon_ports = [1, 2]` is what plugs in the guns.
 
-## Framework pins
+</details>
 
-Submodule gitlinks (`psxrecomp`, optional `recomp-ui`, nested `recomp-net`)
-are authoritative. `framework_pins.txt` is an optional scaffold snapshot;
-release CI logs SHAs with `record_pins.sh` but builds whatever the gitlinks
-resolve to. Bump submodules deliberately — do not float on `main`/`master`
-in release CI.
+## How it works
 
-<!-- retcomm-readme-raid -->
----
+- **[PSXRecomp](https://github.com/mstan/psxrecomp)** reads the game's PlayStation executable and translates its MIPS R3000 machine code into C, about 2,600 functions. That C is compiled into a normal Windows program and linked with a runtime that behaves like the PlayStation hardware (graphics, sound, CD drive, controllers), with the open-source [OpenBIOS](https://github.com/grumpycoders/pcsx-redux) in place of Sony's BIOS.
+- PSXRecomp had no light-gun support, so this port adds a **Namco GunCon (NPC-103)** to its controller emulation. The gun answers the game with its ID and the screen position where it "saw" the TV's electron beam. The port works that position out from your cursor or sight and the game's own video timing, the same way the [DuckStation](https://github.com/stenzek/duckstation) emulator does.
+- Port 2's gun only plugs itself in while a second controller is connected, so the game never waits on a calibration screen for a player who isn't there.
+- The framework changes are on the [`pointblank` branch of TekRantGaming/psxrecomp](https://github.com/TekRantGaming/psxrecomp/tree/pointblank).
 
-<p align="center">
-  <sub><b>R.A.I.D. — Retro AI Development</b> · a Discord for AI-assisted retro reverse-engineering, decomp &amp; recomp</sub>
-</p>
+## Credits
 
-<p align="center">
-  <a href="https://discord.gg/Ad9BwSzctP"><img src=".github/raid-discord.png" alt="Join the Retro AI Development (R.A.I.D.) Discord" width="200"></a>
-</p>
-<!-- /retcomm-readme-raid -->
+- **Point Blank** (Gunbullet in Japan) by Namco, PlayStation version 1997.
+- [**PSXRecomp**](https://github.com/mstan/psxrecomp) by Matthew Stanley and the RetroPortingToolkit team, which does the code translation and runs the game, with [**recomp-ui**](https://github.com/RetroPortingToolKit/recomp-ui) for the launcher.
+- [**OpenBIOS**](https://github.com/grumpycoders/pcsx-redux) from the PCSX-Redux project, [**SDL**](https://www.libsdl.org/) and [**Dear ImGui**](https://github.com/ocornut/imgui).
+- [**psx-spx**](https://psx-spx.consoledev.net/) for documenting the GunCon.
+
+PSXRecomp is under the [PolyForm Noncommercial License 1.0.0](https://github.com/mstan/psxrecomp/blob/master/LICENSE), so this port is for non-commercial use only.
+
+> [!NOTE]
+> **AI disclosure:** this port was made almost entirely with Claude Code (Anthropic). The repository owner directed and tested the work; the AI did the analysis, code, tools and documentation.
+
+> [!IMPORTANT]
+> This project is not affiliated with or endorsed by Bandai Namco Entertainment or Sony. It contains no game code or assets. Do not open issues asking for game files.

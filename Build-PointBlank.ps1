@@ -149,7 +149,7 @@ Step 3 "Translating the game code (a few minutes)"
 Push-Location $root
 try {
     Run "Building the recompiler" { cmake -S psxrecomp/recompiler -B build-recompiler -G Ninja -DCMAKE_BUILD_TYPE=Release }
-    Run "Building the recompiler" { cmake --build build-recompiler }
+    Run "Building the recompiler" { cmake --build build-recompiler --target psxrecomp-game psxrecomp-bios }
     Run "Translating" { & $python psxrecomp/psxrecomp_cli.py generate --config game.toml --project-root . --disc $Cue }
 
     # -------------------------------------------------------------- 4. compile ---
