@@ -21,8 +21,6 @@ project(PointBlankRecomp LANGUAGES C CXX)
 # if(EXISTS "${PSXRECOMP_ROOT}/lib/recomp-net/CMakeLists.txt")
 #     set(PSX_NETPLAY ON CACHE BOOL "…" FORCE)
 # endif()
-set(PSX_SETUP_WIZARD ON CACHE BOOL
-    "Advertise first-run setup wizard + Generate & rebuild in recomp-ui" FORCE)
 include("${PSXRECOMP_ROOT}/runtime/runtime.cmake")
 
 # This project's own mod catalog. The FRAMEWORK stages it -- together with its
@@ -39,7 +37,6 @@ psxrecomp_add_game_runtime(psx-runtime
     PRELOADED_MODS_DIR "${PSX_PRELOADED_MODS}"
     # ENABLE_NETPLAY_IF_PRESENT
     # NETPLAY_LOBBY_URL "ws://netplay.retcomm.net:8765"
-    ENABLE_SETUP_WIZARD
     WINDOW_TITLE "PointBlank Recompiled"
     DEFAULT_GAME_CONFIG_PATH "game.toml"
     MAX_PLAYERS 2
@@ -50,7 +47,7 @@ psxrecomp_add_game_runtime(psx-runtime
     # it fails instead of building a setup host.
     GEN_MARKER "generated/SLUS_004.81_dispatch.c"
     GEN_FULL_GLOB "generated/SLUS_004.81_full_*.c"
-    CODEGEN_SETUP_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/codegen_setup.c"
+    LAUNCHER_BOXART "${CMAKE_CURRENT_SOURCE_DIR}/launcher_assets/img/boxart.tga"
 )
 # Point Blank activation plugins for the mods in mods/preloaded (Skip Intro).
 target_sources(psx-runtime PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/pointblank_mods.c")

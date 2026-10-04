@@ -10,7 +10,7 @@
 
 ### Namco's Point Blank on PC, running natively. Shoot with your mouse or an Xbox controller, no light gun needed.
 
-[<img src="https://img.shields.io/badge/Download-Windows%20Builder-ff4f9a?style=for-the-badge&logo=windows&logoColor=white&labelColor=101433" alt="Download for Windows" height="40">](https://github.com/TekRantGaming/point-blank-recompiled/releases/latest)
+[<img src="https://img.shields.io/badge/Download-Windows%20x64-ff4f9a?style=for-the-badge&logo=windows&logoColor=white&labelColor=101433" alt="Download for Windows" height="40">](https://github.com/TekRantGaming/point-blank-recompiled/releases/latest)
 
 <sub>The original PlayStation game code, translated to native PC code with <a href="https://github.com/mstan/psxrecomp">PSXRecomp</a>. <b>No game files included</b>: bring your own disc image of Point Blank (PlayStation, North America, SLUS-00481).</sub>
 
@@ -56,8 +56,8 @@ Every function of the game was translated from PlayStation code to C and compile
 </td>
 <td valign="top">
 
-**One-click builder**<br>
-Double-click, pick your disc image, and the builder makes the PC version for you. No technical steps.
+**PC graphics options**<br>
+FXAA, sharpening, brightness, higher internal resolution, fullscreen, VSync and an FPS counter, all set in the launcher.
 
 </td>
 </tr>
@@ -122,6 +122,55 @@ Everything is chosen by shooting it, like the original. Shoot **NO** to skip loa
 </tr>
 </table>
 
+## The launcher
+
+Everything is set up before the game starts. Install your disc, pick your controls and choose the PC graphics options, then press **Play**.
+
+<table>
+<tr>
+<td width="55%"><img src="docs/images/launcher-dashboard.jpg" alt="Launcher dashboard"></td>
+<td valign="middle">
+
+### Install your disc
+- **Browse For Disc**: pick your `Point Blank (USA).cue`
+- The launcher checks it is the right game (serial, region and image) and shows **Disc verified**
+- **Install To Game Folder** copies the disc next to the game with a progress bar, so it keeps working if the original is moved
+- Two memory cards, player devices, and **Skip launcher on boot**
+
+</td>
+</tr>
+<tr>
+<td valign="middle">
+
+### Display and graphics
+- **Window size**, **fullscreen** (borderless or exclusive) and **VSync** (off, on, adaptive)
+- **Internal resolution** from native up to 4K and beyond
+- **FXAA**, **sharpening** (contrast adaptive) and **brightness**
+- Texture filtering, anti-aliasing, FMV filtering, perspective-correct textures
+- CRT **screen model** and **scanlines**, and an **FPS counter**
+
+</td>
+<td width="55%"><img src="docs/images/launcher-display.jpg" alt="Display settings"></td>
+</tr>
+<tr>
+<td><img src="docs/images/launcher-settings.jpg" alt="Light gun settings"></td>
+<td valign="middle">
+
+### Light gun
+- **Crosshair**: off, only when aiming with a controller, or always (it then replaces the mouse cursor)
+- **Crosshair style**: cross, dot or ring, in small, medium or large
+- **Controller aim speed** from 25% to 300%
+- Audio volume and quality, BIOS choice and rebindable **hotkeys**
+
+</td>
+</tr>
+</table>
+
+<div align="center">
+<img src="docs/images/pc-options-ingame.jpg" alt="FXAA, sharpening, brightness, the FPS counter and the ring crosshair in game" width="80%">
+<br><sub>In game with FXAA, sharpening, raised brightness, the FPS counter and the large ring crosshair.</sub>
+</div>
+
 ## Controls
 
 | Action | Mouse | Controller |
@@ -138,18 +187,17 @@ The first controller plays as Player 1 alongside the mouse; a second controller 
 
 **You need:** Windows 10 or 11 (64-bit), a graphics card with OpenGL 3.3, and your own disc image of **Point Blank (USA)** as a `.cue` with its `.bin` (Redump `Point Blank (USA)`, serial SLUS-00481).
 
-1. Download the **Windows builder** from the [latest release](https://github.com/TekRantGaming/point-blank-recompiled/releases/latest) and unzip it.
-2. Double-click **Build Point Blank.bat**.
-3. If it asks, let it install the build tools (Visual Studio Build Tools with Clang, CMake, Ninja and Python). This is a one-time download of about 6 GB.
-4. Pick your `Point Blank (USA).cue` when asked. The builder checks that it is the right game.
-5. Wait while it builds (15 to 30 minutes). The finished game appears in the **PointBlank** folder, with an optional desktop shortcut.
+1. Download `PointBlank-PC-Port-*-windows-x64.zip` from the [latest release](https://github.com/TekRantGaming/point-blank-recompiled/releases/latest) and unzip it anywhere.
+2. Run **PointBlank_Recompiled.exe**.
+3. In the launcher, press **Browse For Disc** and pick your `Point Blank (USA).cue`. When it says **Disc verified**, press **Install To Game Folder** (optional, but recommended).
+4. Choose your settings and press **Play**. The first time, the game asks you to calibrate the gun: shoot the centre of the target, then press **A** (right click or Start).
 
-**Why a builder and not a ready-made download?** The PC version is made from the game's own code, which belongs to Namco and can't be shared. The builder makes it on your PC from your own disc, so nothing from the game is ever downloaded or uploaded.
+**The download contains no game data.** The game's pictures, sounds and stages all come from your own disc. Windows SmartScreen may warn about an unrecognised app because the program is not code-signed; choose *More info*, then *Run anyway*.
 
-The game opens with a launcher where you can change the display, controls and mods. Run `PointBlank_Recompiled.exe --no-launcher` to go straight into the game.
+Settings are saved next to the game in `settings.toml`, and saves in `saves/`. Run `PointBlank_Recompiled.exe --no-launcher` to go straight into the game.
 
 <details>
-<summary><b>Building by hand (for developers)</b></summary>
+<summary><b>Building from source (for developers)</b></summary>
 
 ```powershell
 git clone --recursive https://github.com/TekRantGaming/point-blank-recompiled.git

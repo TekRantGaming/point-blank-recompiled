@@ -4,9 +4,10 @@
 # so no game code is released.
 name: release
 
+# Manual only: releases now ship a prebuilt Windows package, which is built
+# locally with packaging/package_windows.ps1 (it needs the generated game C,
+# which is not in this repository) and uploaded with gh release create.
 on:
-  push:
-    tags: ["v*"]
   workflow_dispatch:
 
 permissions:

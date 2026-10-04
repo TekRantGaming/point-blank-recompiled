@@ -4,5 +4,5 @@
 	branch = pointblank
 [submodule "recomp-ui"]
 	path = recomp-ui
-	url = https://github.com/RetroPortingToolKit/recomp-ui.git
-	branch = master
+	url = https://github.com/TekRantGaming/recomp-ui.git
+	branch = pointblank
