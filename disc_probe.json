@@ -1,0 +1,31 @@
+{
+  "cue_path": "C:\\point blanks recomp\\disc\\Point Blank (USA).cue",
+  "cue_name": "Point Blank (USA).cue",
+  "bin_name": "Point Blank (USA).bin",
+  "track_count": 1,
+  "data_track_size": 297657360,
+  "data_track_md5": "d4804593a5dab1c91caf91eb81be8742",
+  "data_track_sha1": "367a96937bfbe19ce5089c0b364f513cbe07dd1e",
+  "data_track_crc32": "df9b6c4a",
+  "boot_exe": "SLUS_004.81",
+  "serial": "SLUS-00481",
+  "serial_exe": "SLUS_004.81",
+  "volume_id": "POINTBLANK",
+  "display_name": "PointBlank",
+  "load_address": "0x80013000",
+  "entry_pc": "0x8004391C",
+  "text_size": "0x00089800",
+  "stack_base": "0x801FFFF0",
+  "require_cue": true,
+  "required_disc_fp": "642f26d4c6bba059f241a58a1095d9cf81393d9bb1536478e982e36e0db7eb11",
+  "boot_exe_sha256": "9510b908bc27e1aecf8f630f5f7bde637da63dc22806eb527f86bd3504c7d2d4",
+  "seed_count": 840,
+  "warnings": [
+    "cue has only 1 TRACK \u2014 Track-01-only dumps fail multi-track netplay/catalog gates; prefer a full Redump cue."
+  ],
+  "notes": [
+    "entry_pc/load_address/text_size/stack_base taken from PS-X EXE header.",
+    "seeds are first-pass boot-EXE JAL targets (+ entry); expect to grow as overlays / runtime paths are discovered.",
+    "required_disc_fp is psxrecomp-toc-v1 (matches runtime DiscIdentity)."
+  ]
+}
