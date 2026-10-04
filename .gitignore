@@ -7,10 +7,13 @@
 /out/
 /.happypath/
 
-# generated/ is COMMITTED: releases ship the compiled game, and CI builds it
-# from the game C in this repo (psxrecomp_cli.py generate, then git add
-# generated). Never ignore it. Only the framework submodule's own generated/
-# (BIOS backends) stays untracked, and that is the submodule's rule.
+# generated/ is NOT committed: the recompiled C is derived from the game's own
+# code, which belongs to Namco. The builder (Build Point Blank.bat) regenerates
+# it on the player's PC from their own disc.
+/generated/
+/PointBlank/
+overlay_captures.json*
+
 # psxrecomp_cli.py work areas (overlay toolchain download, static overlay
 # shard evidence -- the latter holds bytes read from the disc).
 /.cache/

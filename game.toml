@@ -6,7 +6,7 @@ name = "PointBlank"
 id = "SLUS-00481"
 players = 2
 exe = "disc/SLUS_004.81"
-disc = "C:/point blanks recomp/disc/Point Blank (USA).cue"
+disc = "disc/Point Blank (USA).cue"   # the builder points this at your own disc
 load_address = "0x80013000"
 entry_pc = "0x8004391C"
 text_size = "0x00089800"
@@ -45,6 +45,9 @@ aspect_ratio = "4:3"
 
 [controller]
 default_mode = "digital"
+# Point Blank is a light-gun game: Namco GunCons on ports 1 and 2.
+# P1 aims with the mouse or a gamepad; P2 with a second gamepad.
+guncon_ports = [1, 2]
 
 # Online mount gate: digests + track count + optional TOC fingerprint
 # (see docs/NETPLAY.md).

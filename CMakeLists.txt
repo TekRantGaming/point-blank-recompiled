@@ -52,6 +52,8 @@ psxrecomp_add_game_runtime(psx-runtime
     GEN_FULL_GLOB "generated/SLUS_004.81_full_*.c"
     CODEGEN_SETUP_SOURCES "${CMAKE_CURRENT_SOURCE_DIR}/codegen_setup.c"
 )
+# Point Blank activation plugins for the mods in mods/preloaded (Skip Intro).
+target_sources(psx-runtime PRIVATE "${CMAKE_CURRENT_SOURCE_DIR}/pointblank_mods.c")
 
 # >>> psxrecomp:recomp-net-headers (managed by tools/update_cmake.{sh,ps1})
 # runtime/src/main.cpp includes recomp_net/host_relay.h unconditionally (a
